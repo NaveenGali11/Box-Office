@@ -6,7 +6,7 @@ import { apiGet } from '../misc/config';
 function Home() {
   const [input, setInput] = useState('');
   const [results, setResults] = useState(null);
-
+  const [searchOption, setsearchOption] = useState('shows');
   const onInputChange = ev => {
     setInput(ev.target.value);
   };
@@ -45,10 +45,23 @@ function Home() {
     <MainPageLayout>
       <input
         type="text"
+        placeholder="Search for something"
         onChange={onInputChange}
         onKeyDown={onKeyDown}
         value={input}
       />
+
+      <div>
+        <label htmlFor="shows-search">
+          Shows
+          <input type="radio" id="shows-search" value="shows" />
+        </label>
+        <label htmlFor="actors-search">
+          Actors
+          <input type="radio" id="actors-search" value="people" />
+        </label>
+      </div>
+
       <button type="button" onClick={onSearch}>
         Search
       </button>
